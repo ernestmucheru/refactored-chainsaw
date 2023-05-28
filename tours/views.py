@@ -52,6 +52,7 @@ def edit_tour(request):
             tour.price = request.POST.get('price')
             tour.save()
             return HttpResponseRedirect('/')
+        
 
 #Delete Tour
 def delete_tour(request, tour_id):
