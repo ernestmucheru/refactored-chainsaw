@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block navbar-content %}
+    <i class="tex-warning fas-fa-shirt"></i>&nbsp;&nbsp; Tour List
+    
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    
+    <br>
+    <br>
+
+    <a href="{% url 'add_tour' %}" class="btn btn-outline-secondary btn-sm"> <i class="fas fa-plus"></i>&nbsp;&nbsp; Add Tour </a>
+
+    <table class="table table-bordered table-sm mt-4" style="text-align: center; font-size: 14px;">
+        <thead class="table-warning">
+            <tr>
+                <th style="width:15%;">Tour</th>
+                <th style="width:10%;" >Price</th>
+                <th style="width:20%;" >Photos</th>
+                <th style="width:25%;" >Description</th>
+                <th colspan="2" style="width:45%;" >Blog</th>
+            </tr>
+        </thead>
+        <!-- Backend Data -->
+        {% for tour in tours %}
+        <tr>
+            <td>{{ tour.tour }}</td>
+            <td>{{ tour.price }}</td>
+            <td>{{ tour.photos }}</td>
+            <td>{{ tour.description }}</td>
+            <td>{{ tour.blog }}</td>
+            <td>{{tour.created_at | date:'m/d/Y (H:i)'}}</td>
+            <td>
+                <a href="/tour/{{tour.id}}" class="btn btn-warning" title="Edit Tour">
+                <i class="fas fa-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a href="/delete_tour/{{tour.id}}" class="btn btn-secondary" title="Delete Tour">
+                <i class="fas fa-trash"></i>
+                </a>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    
+</div>
+
+{% endblock %}

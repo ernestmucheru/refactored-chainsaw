@@ -1,0 +1,35 @@
+{% extends 'add.html' %}
+
+{% block navbar-content %}
+    <i class="tex-warning fas-fa-shirt"></i>&nbsp;&nbsp; Tour List
+    
+{% endblock %}
+
+<!-- Block card color and title -->
+{% block card-color %} border-dark bg-warning {% endblock %}
+{% block card-tile %} <strong>Registered at: </strong> <span>{{tour.created_at | date:'m/d/Y (H:i)'}}</span> {% endblock %}
+<!-- Form action -->
+{% block action  %} action=" /edit_tour" {% endblock %}
+<!-- Button Action -->
+{% block btn-action %} <i class="fas fa-server"> </i> &nbsp;&nbsp; Save Changes {% endblock %}
+
+<!-- Inputs -->
+{% block value-id %}
+<div class="input-group mb-3">
+    <span class="side-label btn border-secondary bg-light" > <i class="fas fa-info"></i></span>
+    <input type="text" class="form-control" name="tour" maxlength="40" placeholder="Tour Name" required {% block value-tour %}{% endblock %}>
+</div>
+
+{% endblock %}
+
+
+<!-- Price -->
+{% block value-price %} value="{{tour.price}}" {% endblock %}
+<!-- photos -->
+{% block value-photos %} value="{{tour.photos}}" {% endblock %}
+<!-- description -->
+{% block value-description %} value="{{tour.description}}" {% endblock %}
+<!-- blog -->
+<div class="form-group">
+    <textarea name="blog" id="" cols="30" rows="10" class="form-control" placeholder="" {% block value-blog %}{% endblock %}></textarea>
+</div>
